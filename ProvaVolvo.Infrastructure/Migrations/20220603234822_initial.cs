@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProvaVolvo.Infrastructure.Migrations
 {
@@ -11,11 +10,11 @@ namespace ProvaVolvo.Infrastructure.Migrations
                 name: "Caminhoes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Modelo = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    AnoFabricacao = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AnoModelo = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Modelo = table.Column<string>(type: "TEXT", nullable: true),
+                    AnoFabricacao = table.Column<string>(type: "TEXT", nullable: true),
+                    AnoModelo = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {

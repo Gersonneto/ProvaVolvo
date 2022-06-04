@@ -32,8 +32,8 @@ namespace ProvaVolvo.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("VolvoDatabase")));
-            //services.AddDbContext<ApplicationContext>(options => options.UseInMemoryDatabase("Volvobase"));
+            
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlite(Configuration.GetConnectionString("VolvoDatabase")));
             services.AddScoped<CaminhoesService>();
             services.AddScoped<IUnitofWork, UnitOfWork>();
             services.AddScoped<ICaminhaoRepository, CaminhaoRepository>();
@@ -42,6 +42,15 @@ namespace ProvaVolvo.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "ProvaVolvo.Api", Version = "v1" });
+            });
+            services.AddCors(option =>
+            {
+                option.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
             });
         }
 
@@ -58,6 +67,7 @@ namespace ProvaVolvo.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors();
 
             app.UseAuthorization();
 

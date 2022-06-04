@@ -91,6 +91,23 @@ namespace ProvaVolvo.Api.Controllers
                 throw e;
             }
         }
+        [HttpDelete("{id}")]
+        public ActionResult Deletar(long id)
+        {
+            try
+            {
+                _logger.LogInformation("Recebendo requisição de listar um caminhão.");
+                this._service.Deletar(id);
+                _logger.LogInformation("Retornando requisição de listar um processo.");
+                return Ok();
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError("Falha na requisição :" + e.Message);
+                throw e;
+            }
+        }
 
 
     }

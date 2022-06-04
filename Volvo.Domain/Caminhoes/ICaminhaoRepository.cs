@@ -9,5 +9,6 @@ namespace ProvaVolvo.Domain.Caminhoes
         Caminhao ListarPorId(long id);
         void Cadastrar(Caminhao caminhao);
         void Atualizar(Caminhao caminhao);
+        void Deletar(Caminhao caminhao);
     }
 }

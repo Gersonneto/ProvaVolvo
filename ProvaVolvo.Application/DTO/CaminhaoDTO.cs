@@ -10,7 +10,7 @@ namespace ProvaVolvo.Application.DTO
     {
         public int Id { get; set; } 
         public string Modelo { get; set; }
-        public DateTime AnoFabricacao { get; set; }
-        public DateTime AnoModelo { get; set; }
+        public string AnoFabricacao { get; set; }
+        public string AnoModelo { get; set; }
     }
 }

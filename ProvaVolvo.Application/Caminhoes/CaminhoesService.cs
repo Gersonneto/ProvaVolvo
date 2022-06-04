@@ -44,7 +44,19 @@ namespace ProvaVolvo.Application.Caminhoes
             }
 
         }
+        public void Deletar(long id)
+        {
+            var _caminhao = this.unitOfWork.CaminhaoRepository.ListarPorId(id);
 
+            if (_caminhao is null)
+            {
+                throw new Exception("Caminhão não encontrado.");
+            }
+
+            this.unitOfWork.CaminhaoRepository.Deletar(_caminhao);
+            this.unitOfWork.Commit();
+
+        }
         public void Cadastrar(CaminhaoDTO caminhao)
         {
             var _caminhao = new Caminhao();

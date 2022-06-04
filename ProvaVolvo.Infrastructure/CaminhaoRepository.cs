@@ -38,6 +38,10 @@ namespace ProvaVolvo.Infrastructure
         {
             return context.Caminhoes.AsNoTracking().ToList();
         }
+        public void Deletar(Caminhao caminhao)
+        {
+            this.context.Caminhoes.Remove(caminhao);
+        }
     }
 }
 
